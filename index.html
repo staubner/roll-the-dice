@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="./src/script.js"></script>
+    <title>Roll the Dice!</title>
+</head>
+
+<body>
+    <h1>Roll the Dice!</h1>
+    <form id="form" action="">
+        <label for="num-dice">Select number of dice</label>
+        <input type="number" name="num-dice" id="num-dice" min="1" max="50">
+        <br>
+        <label for="num-sides">Select type of dice</label>
+        <select name="num-sides" id="num-sides" form="form">
+            <option value="">--</option>
+            <option id="d4" value="4">Four Sided</option>
+            <option id="d6" value="6">Six Sided</option>
+            <option id="d8" value="8">Eight Sided</option>
+            <option id="d10" value="10">Ten Sided</option>
+            <option id="d12" value="12">12 Sided</option>
+            <option id="d20" value="20">20 Sided</option>
+            <option id="d100" value="100">100 Sided</option>
+        </select>
+        <br><br>
+        <input type="submit" id="roll-dice" value="Roll the Dice!">
+    </form>
+    <br><br>
+    <div id="results"></div>
+    <br><br>
+    <div id="quick-roll">
+        <button id="quick-attack-roll">Quick Attack Roll</button>
+    </div>
+    <div id="attack-roll" hidden></div>
+
+</body>
+
+</html>
