@@ -6,6 +6,7 @@ const resetBtn = document.getElementById('reset')
 const rollSound = new Audio('../audio/rolling-dice-2-102706.mp3')
 const errorSound = new Audio('../audio/error-126627.mp3')
 
+//rolls dice
 dice.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -36,6 +37,7 @@ dice.addEventListener('submit', (event) => {
     rollSound.play();
 });
 
+//rolls a d20
 quickAttack.addEventListener('click', () => {
     quickResult.innerText = '';
 
@@ -54,6 +56,7 @@ quickAttack.addEventListener('click', () => {
     rollSound.play();
 });
 
+//resets page
 resetBtn.addEventListener('click', () => {
     window.location.reload();
 })

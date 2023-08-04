@@ -22,9 +22,14 @@ h5 {
     margin: 10px 0;
 }
 
+#num-dice {
+    width: 36px;
+}
+
 #num-dice,
 #num-sides {
     margin-top: 10px;
+    font-size: 1rem;
 }
 
 #results {
