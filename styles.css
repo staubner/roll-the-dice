@@ -13,7 +13,13 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+h5 {
+    text-align: center;
+    margin: 10px 0;
 }
 
 #num-dice,
@@ -22,12 +28,10 @@ h1 {
 }
 
 #results {
-    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    /* max-width: 500px; */
     justify-content: center;
 }
 
@@ -58,8 +62,9 @@ h1 {
 }
 
 #quick-attack-roll {
-    font-size: 2rem;
+    font-size: 1.5rem;
     border-radius: 5px;
+    width: 200px;
 }
 
 #attack-roll {
@@ -69,6 +74,11 @@ h1 {
     width: 200px;
     margin: 0 auto;
     font-size: 3rem;
+}
+
+#reset-container {
+    margin-top: 5px;
+    text-align: center;
 }
 
 label {

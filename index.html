@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <script type="module" src="./src/script.js"></script>
-    <title>Roll the Dice!</title>
+    <script type="module" src="./src/quick-dice.js"></script>
+    <title>Dice Roller</title>
 </head>
 
 <body>
-    <h1>Roll the Dice!</h1>
+    <h1>Quick Dice</h1>
+    <h5><a href="./custom-dice.html">Custom Dice</a></h5>
     <form id="form" action="">
         <label for="num-dice">Select number of dice</label>
-        <input type="number" name="num-dice" id="num-dice" min="1" max="50">
+        <input type="number" name="num-dice" id="num-dice" min="1" max="20" value="1">
         <br>
         <label for="num-sides">Select type of dice</label>
         <select name="num-sides" id="num-sides" form="form">
@@ -33,9 +34,12 @@
     <div id="results"></div>
     <br><br>
     <div id="quick-roll">
-        <button id="quick-attack-roll">Quick Attack Roll</button>
+        <button id="quick-attack-roll">Quick d20 Roll</button>
     </div>
     <div id="attack-roll" hidden></div>
+    <div id="reset-container">
+        <button id="reset">Reset</button>
+    </div>
 
 </body>
 

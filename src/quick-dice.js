@@ -2,6 +2,9 @@ const dice = document.getElementById('form')
 const results = document.getElementById('results')
 const quickAttack = document.getElementById('quick-attack-roll')
 const quickResult = document.getElementById('attack-roll')
+const resetBtn = document.getElementById('reset')
+const rollSound = new Audio('../audio/rolling-dice-2-102706.mp3')
+const errorSound = new Audio('../audio/error-126627.mp3')
 
 dice.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -11,6 +14,7 @@ dice.addEventListener('submit', (event) => {
     }
 
     if (event.target[0].value === '' || event.target[1].value === '') {
+        errorSound.play();
         window.alert('Invalid selection, please specify a number of dice and type of dice to roll')
         return;
     }
@@ -29,6 +33,7 @@ dice.addEventListener('submit', (event) => {
         results.appendChild(result);
     }
 
+    rollSound.play();
 });
 
 quickAttack.addEventListener('click', () => {
@@ -45,4 +50,10 @@ quickAttack.addEventListener('click', () => {
     } else {
         quickResult.innerText = ` ${attackRoll}`
     }
+
+    rollSound.play();
+});
+
+resetBtn.addEventListener('click', () => {
+    window.location.reload();
 })
