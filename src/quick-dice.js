@@ -23,16 +23,19 @@ dice.addEventListener('submit', (event) => {
     const numDice = event.target[0].value;
     const numSides = event.target[1].value;
 
-    for (let i = numDice; i > 0; i--) {
-        const roll = Math.ceil(Math.random() * numSides)
-        const result = document.createElement('div');
-        result.setAttribute('id', i);
-        result.setAttribute('class', 'roll')
-        result.innerText = roll;
-
-
-        results.appendChild(result);
-    }
+    setTimeout(() => {
+        for (let i = numDice; i > 0; i--) {
+            const roll = Math.ceil(Math.random() * numSides)
+            const result = document.createElement('div');
+            result.setAttribute('id', i);
+            result.setAttribute('class', 'roll')
+            result.innerText = roll;
+    
+    
+            results.appendChild(result);
+        }
+    }, 1000);
+    
 
     rollSound.play();
 });
@@ -43,15 +46,17 @@ quickAttack.addEventListener('click', () => {
 
     const attackRoll = Math.ceil(Math.random() * 20);
 
-    quickResult.removeAttribute('hidden')
+    setTimeout(() => {
+        if (attackRoll === 1) {
+            quickResult.innerText = ` ${attackRoll} Oof!`
+        } else if (attackRoll === 20) {
+            quickResult.innerText = ` ${attackRoll} Nice!`
+        } else {
+            quickResult.innerText = `${attackRoll}`
+        }
 
-    if (attackRoll === 1) {
-        quickResult.innerText = ` ${attackRoll} Oof!`
-    } else if (attackRoll === 20) {
-        quickResult.innerText = ` ${attackRoll} Nice!`
-    } else {
-        quickResult.innerText = ` ${attackRoll}`
-    }
+        quickResult.removeAttribute('hidden')
+    }, 1000);
 
     rollSound.play();
 });

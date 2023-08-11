@@ -12,6 +12,36 @@
 <body>
     <h1>Custom Dice</h1>
     <h5><a href="./index.html">Quick Dice</a></h5>
+
+    <form id="custom-form" action="">
+        <h2>Create a custom dice roll</h2>
+        <label for="dice-name">Name for Dice Roll</label>
+        <input name="dice-name" id="dice-name">
+        <br>
+        <label for="num-dice">Select number of dice</label>
+        <input type="number" name="num-dice" id="num-dice" min="1" max="20" value="1">
+        <br>
+        <label for="num-sides">Select type of dice</label>
+        <select name="num-sides" id="num-sides" form="custom-form">
+            <option value="">--</option>
+            <option id="d4" value="4">Four Sided</option>
+            <option id="d6" value="6">Six Sided</option>
+            <option id="d8" value="8">Eight Sided</option>
+            <option id="d10" value="10">Ten Sided</option>
+            <option id="d12" value="12">12 Sided</option>
+            <option id="d20" value="20">20 Sided</option>
+            <option id="d100" value="100">100 Sided</option>
+        </select>
+        <br>
+        <label for="">Modifier (Optional)</label>
+        <input type="number" name="modifier" id="modifier" min="-20" max="20" value="0">
+        <br><br>
+        <input type="submit" id="create-custom" value="Create Custom Roll">
+    </form>
+
+    <div id="roll-list">
+        <h2  id="custom-header">Custom Rolls</h2>
+    </div>
 </body>
 
 </html>

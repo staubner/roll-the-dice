@@ -27,12 +27,15 @@ h5 {
 }
 
 #num-dice,
-#num-sides {
+#num-sides,
+#dice-name,
+#modifier {
     margin-top: 10px;
     font-size: 1rem;
 }
 
 #results {
+    height: 80px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -41,13 +44,16 @@ h5 {
 }
 
 .roll {
-    font-size: 4rem;
+    font-size: 3.5rem;
     border: 1px solid black;
     padding: 3px 20px;
     border-radius: 5px;
+    max-width: 80px;
+    text-align: center;
 }
 
-#roll-dice {
+#roll-dice,
+#create-custom {
     font-size: 1.5rem;
     border-radius: 5px;
 }
@@ -76,8 +82,9 @@ h5 {
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
+    height: 55px;
     width: 200px;
-    margin: 0 auto;
+    margin: 10px auto;
     font-size: 3rem;
 }
 
@@ -88,4 +95,87 @@ h5 {
 
 label {
     font-size: 1.5rem;
+}
+
+#custom-header {
+    border-bottom: 1px solid black;
+    margin-bottom: 0;
+}
+
+#custom-form,
+#roll-list {
+    display: inline-block;
+    width: 50%;
+}
+
+#custom-form {
+    float: left;
+    width: 50%;
+}
+
+#custom-roll-name {
+    text-decoration: underline;
+}
+
+.custom-roll-button {
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+.saved-roll {
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saved-roll-attributes {
+    width: 60%;
+}
+
+.saved-roll-attributes > p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+    width: 70%;
+}
+
+.custom-roll-box {
+    margin: 10px 0;
+}
+
+@media only screen and (max-width: 920px) {
+    #results {
+        height: 160px;
+    }
+
+    #custom-form,
+    #roll-list {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+    }
+
+    .saved-roll {
+        width: 100%;
+    }
+
+    .saved-roll-attributes {
+        width: 60%;
+    }
+
+    /* .saved-roll-attributes > p {
+        font-size: 1rem;
+        margin: 5px 0;
+    } */
+
+    .roll {
+        font-size: 3rem;
+        border: 1px solid black;
+        padding: 3px 20px;
+        border-radius: 5px;
+        max-width: 80px;
+        text-align: center;
+    }
 }
