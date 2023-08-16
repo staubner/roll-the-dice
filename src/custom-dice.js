@@ -1,9 +1,12 @@
+import { checkForDupes } from './dupe-name-check.js';
+
 const resetBtn = document.getElementById('reset')
 const rollSound = new Audio('../audio/rolling-dice-2-102706.mp3')
 const errorSound = new Audio('../audio/error-126627.mp3')
 const customForm = document.getElementById('custom-form')
 const rollList = document.getElementById('roll-list')
 
+const rollArray = [];
 
 customForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -19,21 +22,25 @@ customForm.addEventListener('submit', (event) => {
     const numSides = event.target[2].value;
     const modifier = event.target[3].valueAsNumber;
 
-    const namesToCheck = document.querySelectorAll('.saved-roll');
 
-    // if (namesToCheck) {
-    //     const dupe = namesToCheck.filter((element) => {
-    //         return element.innerText.includes(rollName)
-    //     })
+    //checks for duplicate roll names
+    const isDupe = checkForDupes(rollName);
 
-    // }
-
+    if (isDupe === true) {
+        errorSound.play();
+        alert(`Name ${rollName} has already been used, please choose another name.`);
+        return;
+    }
+    
     const newRollObj = {
         rollName,
         numDice,
         numSides,
         modifier,
     };
+
+    rollArray.push(newRollObj);
+    console.log(rollArray);
 
     const customRoll = document.createElement('div');
     customRoll.setAttribute('class', 'saved-roll');
@@ -81,7 +88,6 @@ customForm.addEventListener('submit', (event) => {
         customRollHeight = 160;
     }
     customRoll.style.height = `${customRollHeight}px`;
-    
 
     const rollButton = document.getElementById(rollName.toLowerCase());
 
