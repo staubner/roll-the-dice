@@ -1,3 +1,5 @@
+const errorSound = new Audio('../audio/error-126627.mp3')
+
 export function checkForDupes(newName) {
     const namesToCheck = document.querySelectorAll('.saved-roll');
 
@@ -14,6 +16,7 @@ export function checkForDupes(newName) {
     allNames.forEach((name) => {
         if (name.includes(newName) === true) {
             isTrue = true;
+            errorSound.play();
         };
     });
 

@@ -1,15 +1,16 @@
 import { checkForDupes } from './dupe-name-check.js';
 
-const resetBtn = document.getElementById('reset')
 const rollSound = new Audio('../audio/rolling-dice-2-102706.mp3')
 const errorSound = new Audio('../audio/error-126627.mp3')
 const customForm = document.getElementById('custom-form')
 const rollList = document.getElementById('roll-list')
 
-const rollArray = [];
+export const rollArray = [];
 
 customForm.addEventListener('submit', (event) => {
     event.preventDefault();
+
+    document.getElementById('create-custom').disabled = true;
 
     if (event.target[0].value === '' || event.target[1].value === '' || event.target[2].value === '') {
         errorSound.play();
@@ -27,7 +28,6 @@ customForm.addEventListener('submit', (event) => {
     const isDupe = checkForDupes(rollName);
 
     if (isDupe === true) {
-        errorSound.play();
         alert(`Name ${rollName} has already been used, please choose another name.`);
         return;
     }
@@ -40,7 +40,6 @@ customForm.addEventListener('submit', (event) => {
     };
 
     rollArray.push(newRollObj);
-    console.log(rollArray);
 
     const customRoll = document.createElement('div');
     customRoll.setAttribute('class', 'saved-roll');
@@ -75,6 +74,12 @@ customForm.addEventListener('submit', (event) => {
     customRollBox.setAttribute('class', 'custom-roll-box');
     customRoll.appendChild(customRollBox);
 
+    const deleteCustomRoll = document.createElement('button');
+    deleteCustomRoll.setAttribute('class', 'delete-custom-roll');
+    deleteCustomRoll.setAttribute('id', `delete-${rollName.toLowerCase()}`)
+    deleteCustomRoll.innerText = 'X';
+    customRoll.appendChild(deleteCustomRoll);
+
     const customRollBtn = document.createElement('button');
     customRollBtn.setAttribute('class', 'custom-roll-button');
     customRollBtn.setAttribute('id', rollName.toLowerCase());
@@ -92,6 +97,8 @@ customForm.addEventListener('submit', (event) => {
     const rollButton = document.getElementById(rollName.toLowerCase());
 
     rollButton.addEventListener('click', () => {
+        rollButton.disabled = true;
+
         while (customRollBox.firstChild) {
             customRollBox.removeChild(customRollBox.firstChild)
         }
@@ -110,10 +117,14 @@ customForm.addEventListener('submit', (event) => {
 
 
                 customRollBox.appendChild(result);
+
+                rollButton.disabled = false;
             }
         }, 1000);
 
 
         rollSound.play();
     })
+
+    document.getElementById('create-custom').disabled = false;
 })

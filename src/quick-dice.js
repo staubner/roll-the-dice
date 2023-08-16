@@ -10,6 +10,8 @@ const errorSound = new Audio('../audio/error-126627.mp3')
 dice.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    document.getElementById('roll-dice').disabled = true;
+
     while (results.firstChild) {
         results.removeChild(results.firstChild)
     }
@@ -31,8 +33,9 @@ dice.addEventListener('submit', (event) => {
             result.setAttribute('class', 'roll')
             result.innerText = roll;
     
-    
             results.appendChild(result);
+
+            document.getElementById('roll-dice').disabled = false;
         }
     }, 1000);
     
@@ -42,6 +45,8 @@ dice.addEventListener('submit', (event) => {
 
 //rolls a d20
 quickAttack.addEventListener('click', () => {
+    quickAttack.disabled = true;
+
     quickResult.innerText = '';
 
     const attackRoll = Math.ceil(Math.random() * 20);
@@ -55,7 +60,7 @@ quickAttack.addEventListener('click', () => {
             quickResult.innerText = `${attackRoll}`
         }
 
-        quickResult.removeAttribute('hidden')
+        quickAttack.disabled = false;
     }, 1000);
 
     rollSound.play();

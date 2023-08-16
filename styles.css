@@ -45,6 +45,7 @@ h5 {
 
 .roll {
     font-size: 3.5rem;
+    background-color: white;
     border: 1px solid black;
     padding: 3px 20px;
     border-radius: 5px;
@@ -117,6 +118,13 @@ label {
     text-decoration: underline;
 }
 
+.delete-custom-roll {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+}
+
 .custom-roll-button {
     font-size: 1.5rem;
     margin: 5px 0;
@@ -127,6 +135,7 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .saved-roll-attributes {
