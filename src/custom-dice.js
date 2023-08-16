@@ -15,6 +15,7 @@ customForm.addEventListener('submit', (event) => {
     if (event.target[0].value === '' || event.target[1].value === '' || event.target[2].value === '') {
         errorSound.play();
         document.getElementById('create-custom').disabled = false;
+        customForm.reset();
         window.alert('Invalid selection, please enter a value in every field')
         return;
     }
@@ -134,6 +135,8 @@ customForm.addEventListener('submit', (event) => {
 
         
     // });
+
+    customForm.reset();
 
     document.getElementById('create-custom').disabled = false;
 })
