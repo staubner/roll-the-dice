@@ -14,6 +14,7 @@ customForm.addEventListener('submit', (event) => {
 
     if (event.target[0].value === '' || event.target[1].value === '' || event.target[2].value === '') {
         errorSound.play();
+        document.getElementById('create-custom').disabled = false;
         window.alert('Invalid selection, please enter a value in every field')
         return;
     }
@@ -29,7 +30,7 @@ customForm.addEventListener('submit', (event) => {
 
     if (isDupe === true) {
         document.getElementById('create-custom').disabled = false;
-        alert(`Name ${rollName} has already been used, please choose another name.`);
+        alert(`Name "${rollName}" has already been used, please choose another name.`);
         return;
     }
     
@@ -96,6 +97,7 @@ customForm.addEventListener('submit', (event) => {
     customRoll.style.height = `${customRollHeight}px`;
 
     const rollButton = document.getElementById(rollName.toLowerCase());
+    const deleteButton = document.getElementById(`delete-${rollName.toLowerCase()}`)
 
     rollButton.addEventListener('click', () => {
         rollButton.disabled = true;
@@ -125,7 +127,13 @@ customForm.addEventListener('submit', (event) => {
 
 
         rollSound.play();
-    })
+    });
+
+    // deleteButton.addEventListener('click', () => {
+    //     deleteButton.disabled = true;
+
+        
+    // });
 
     document.getElementById('create-custom').disabled = false;
 })

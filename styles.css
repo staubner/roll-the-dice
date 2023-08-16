@@ -125,6 +125,10 @@ label {
     border: 0;
 }
 
+.delete-custom-roll:hover, .custom-roll-button:hover, #create-custom:hover, #roll-dice:hover, #quick-attack-roll:hover {
+    cursor: pointer;
+}
+
 .custom-roll-button {
     font-size: 1.5rem;
     margin: 5px 0;
