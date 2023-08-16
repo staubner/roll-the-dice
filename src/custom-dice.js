@@ -28,6 +28,7 @@ customForm.addEventListener('submit', (event) => {
     const isDupe = checkForDupes(rollName);
 
     if (isDupe === true) {
+        document.getElementById('create-custom').disabled = false;
         alert(`Name ${rollName} has already been used, please choose another name.`);
         return;
     }

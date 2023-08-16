@@ -18,6 +18,7 @@ dice.addEventListener('submit', (event) => {
 
     if (event.target[0].value === '' || event.target[1].value === '') {
         errorSound.play();
+        document.getElementById('roll-dice').disabled = false;
         window.alert('Invalid selection, please specify a number of dice and type of dice to roll')
         return;
     }
