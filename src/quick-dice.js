@@ -25,19 +25,21 @@ dice.addEventListener('submit', (event) => {
 
     const numDice = event.target[0].value;
     const numSides = event.target[1].value;
+    let total = 0;
 
     setTimeout(() => {
         for (let i = numDice; i > 0; i--) {
             const roll = Math.ceil(Math.random() * numSides)
-            const result = document.createElement('div');
-            result.setAttribute('id', i);
-            result.setAttribute('class', 'roll')
-            result.innerText = roll;
-    
-            results.appendChild(result);
-
-            document.getElementById('roll-dice').disabled = false;
+            total = total + roll;
         }
+
+        const result = document.createElement('div');
+        result.setAttribute('class', 'roll')
+        result.innerText = total;
+    
+        results.appendChild(result);
+
+        document.getElementById('roll-dice').disabled = false;
     }, 1000);
     
 

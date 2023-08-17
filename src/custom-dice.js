@@ -91,11 +91,11 @@ customForm.addEventListener('submit', (event) => {
 
     rollList.appendChild(customRoll);
 
-    let customRollHeight = numDice * 75;
-    if (customRollHeight < 160) {
-        customRollHeight = 160;
-    }
-    customRoll.style.height = `${customRollHeight}px`;
+    // let customRollHeight = numDice * 75;
+    // if (customRollHeight < 160) {
+    //     customRollHeight = 160;
+    // }
+    // customRoll.style.height = `${customRollHeight}px`;
 
     const rollButton = document.getElementById(rollName.toLowerCase());
     const deleteButton = document.getElementById(`delete-${rollName.toLowerCase()}`)
@@ -107,23 +107,26 @@ customForm.addEventListener('submit', (event) => {
             customRollBox.removeChild(customRollBox.firstChild)
         }
 
+        let total = 0;
+
         setTimeout(() => {
             for (let i = numDice; i > 0; i--) {
-                let roll = Math.ceil((Math.random() * numSides) + modifier);
+                let roll = Math.ceil((Math.random() * numSides));
                 if (roll < 1) {
                     roll = 1;
                 }
 
-                const result = document.createElement('div');
-                // result.setAttribute('id', i);
-                result.setAttribute('class', 'roll')
-                result.innerText = roll;
-
-
-                customRollBox.appendChild(result);
-
-                rollButton.disabled = false;
+                total = total + roll;
             }
+
+            const result = document.createElement('div');
+            result.setAttribute('class', 'roll')
+            result.innerText = total + modifier;
+
+            customRollBox.appendChild(result);
+
+            rollButton.disabled = false;
+
         }, 1000);
 
 
