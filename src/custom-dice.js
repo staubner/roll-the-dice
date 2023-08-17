@@ -34,7 +34,7 @@ customForm.addEventListener('submit', (event) => {
         alert(`Name "${rollName}" has already been used, please choose another name.`);
         return;
     }
-    
+
     const newRollObj = {
         rollName,
         numDice,
@@ -46,6 +46,7 @@ customForm.addEventListener('submit', (event) => {
 
     const customRoll = document.createElement('div');
     customRoll.setAttribute('class', 'saved-roll');
+    customRoll.setAttribute('id', `custom-roll-${rollName}`)
 
     const customRollAttributes = document.createElement('div');
     customRollAttributes.setAttribute('class', 'saved-roll-attributes');
@@ -91,12 +92,6 @@ customForm.addEventListener('submit', (event) => {
 
     rollList.appendChild(customRoll);
 
-    // let customRollHeight = numDice * 75;
-    // if (customRollHeight < 160) {
-    //     customRollHeight = 160;
-    // }
-    // customRoll.style.height = `${customRollHeight}px`;
-
     const rollButton = document.getElementById(rollName.toLowerCase());
     const deleteButton = document.getElementById(`delete-${rollName.toLowerCase()}`)
 
@@ -133,11 +128,16 @@ customForm.addEventListener('submit', (event) => {
         rollSound.play();
     });
 
-    // deleteButton.addEventListener('click', () => {
-    //     deleteButton.disabled = true;
+    deleteButton.addEventListener('click', () => {
+        deleteButton.disabled = true;
 
-        
-    // });
+        if (confirm(`Delete roll "${rollName}?"`) === true) {
+            document.getElementById(`custom-roll-${rollName}`).remove();
+        } else {
+            deleteButton.disabled = false;
+            return;
+        }
+    });
 
     customForm.reset();
 

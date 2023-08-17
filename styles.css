@@ -35,7 +35,7 @@ h5 {
 }
 
 #results {
-    height: 93px;
+    height: 100px;
 }
 
 .roll {
@@ -45,7 +45,7 @@ h5 {
     border: 1px solid black;
     padding: 3px 20px;
     border-radius: 5px;
-    max-width: 80px;
+    max-width: 85px;
     text-align: center;
 }
 
@@ -154,7 +154,8 @@ label {
 
 @media only screen and (max-width: 920px) {
     #results {
-        height: 160px;
+        height: 45px;
+        /* width: 100px; */
     }
 
     #custom-form,
@@ -171,7 +172,7 @@ label {
         float: none;
     }
 
-    #custom-form > p {
+    #custom-form > * {
         font-size: 1rem;
     }
 
@@ -187,17 +188,19 @@ label {
         font-size: 1rem;
     }
 
-    /* .saved-roll-attributes > p {
-        font-size: 1rem;
+    .saved-roll-attributes > p {
+        font-size: 0.6rem;
         margin: 5px 0;
-    } */
+    }
 
     .roll {
-        font-size: 3rem;
+        font-size: 1.2rem;
         border: 1px solid black;
-        padding: 3px 20px;
         border-radius: 5px;
-        max-width: 80px;
         text-align: center;
+    }
+
+    .delete-custom-roll {
+        font-size: 0.4rem;
     }
 }
