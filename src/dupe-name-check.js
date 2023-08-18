@@ -5,7 +5,7 @@ export function checkForDupes(newName) {
 
     const allNames = [];
 
-    if(namesToCheck.length > 0) {
+    if (namesToCheck.length > 0) {
         namesToCheck.forEach((element) => {
             allNames.push(element.childNodes[0].childNodes[0].innerText);
         });
