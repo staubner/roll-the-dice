@@ -5,8 +5,6 @@ const errorSound = new Audio('../audio/error-126627.mp3')
 const customForm = document.getElementById('custom-form')
 const rollList = document.getElementById('roll-list')
 
-export const rollArray = [];
-
 customForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -15,7 +13,7 @@ customForm.addEventListener('submit', (event) => {
     if (event.target[0].value === '' || event.target[1].value === '' || event.target[2].value === '') {
         errorSound.play();
         document.getElementById('create-custom').disabled = false;
-        customForm.reset();
+        // customForm.reset();
         window.alert('Invalid selection, please enter a value in every field')
         return;
     }
@@ -42,7 +40,7 @@ customForm.addEventListener('submit', (event) => {
         modifier,
     };
 
-    rollArray.push(newRollObj);
+    localStorage.setItem(rollName, JSON.stringify(newRollObj));
 
     const customRoll = document.createElement('div');
     customRoll.setAttribute('class', 'saved-roll');
@@ -51,24 +49,24 @@ customForm.addEventListener('submit', (event) => {
     const customRollAttributes = document.createElement('div');
     customRollAttributes.setAttribute('class', 'saved-roll-attributes');
 
-    const customRollName = document.createElement('p')
-    customRollName.setAttribute('class', 'custom-roll-attribute')
-    customRollName.setAttribute('class', 'custom-roll-name')
+    const customRollName = document.createElement('p');
+    customRollName.setAttribute('class', 'custom-roll-attribute');
+    customRollName.setAttribute('class', 'custom-roll-name');
     customRollName.innerText = `Name: ${rollName}`;
     customRollAttributes.appendChild(customRollName);
 
     const customRollNumDice = document.createElement('p');
-    customRollNumDice.setAttribute('class', 'custom-roll-attribute')
+    customRollNumDice.setAttribute('class', 'custom-roll-attribute');
     customRollNumDice.innerText = `Number of Dice: ${numDice}`;
     customRollAttributes.appendChild(customRollNumDice);
 
     const customRollTypeDice = document.createElement('p');
-    customRollTypeDice.setAttribute('class', 'custom-roll-attribute')
+    customRollTypeDice.setAttribute('class', 'custom-roll-attribute');
     customRollTypeDice.innerText = `Type of Die: d${numSides}`;
     customRollAttributes.appendChild(customRollTypeDice);
 
     const customRollMod = document.createElement('p');
-    customRollMod.setAttribute('class', 'custom-roll-attribute')
+    customRollMod.setAttribute('class', 'custom-roll-attribute');
     customRollMod.innerText = `Modifier: ${modifier}`;
     customRollAttributes.appendChild(customRollMod);
 
@@ -122,7 +120,7 @@ customForm.addEventListener('submit', (event) => {
 
             rollButton.disabled = false;
 
-        }, 1000);
+        }, 1450);
 
 
         rollSound.play();
@@ -131,8 +129,9 @@ customForm.addEventListener('submit', (event) => {
     deleteButton.addEventListener('click', () => {
         deleteButton.disabled = true;
 
-        if (confirm(`Delete roll "${rollName}?"`) === true) {
+        if (confirm(`Delete roll "${rollName}"?`) === true) {
             document.getElementById(`custom-roll-${rollName}`).remove();
+            localStorage.removeItem(rollName);
         } else {
             deleteButton.disabled = false;
             return;
@@ -142,4 +141,4 @@ customForm.addEventListener('submit', (event) => {
     customForm.reset();
 
     document.getElementById('create-custom').disabled = false;
-})
+});

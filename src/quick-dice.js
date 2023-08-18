@@ -40,7 +40,7 @@ dice.addEventListener('submit', (event) => {
         results.appendChild(result);
 
         document.getElementById('roll-dice').disabled = false;
-    }, 1000);
+    }, 1450);
     
 
     rollSound.play();
@@ -56,15 +56,15 @@ quickAttack.addEventListener('click', () => {
 
     setTimeout(() => {
         if (attackRoll === 1) {
-            quickResult.innerText = ` ${attackRoll} Oof!`
+            quickResult.innerText = `${attackRoll} Oof!`
         } else if (attackRoll === 20) {
-            quickResult.innerText = ` ${attackRoll} Nice!`
+            quickResult.innerText = `${attackRoll} Nice!`
         } else {
             quickResult.innerText = `${attackRoll}`
         }
 
         quickAttack.disabled = false;
-    }, 1000);
+    }, 1450);
 
     rollSound.play();
 });
