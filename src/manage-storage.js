@@ -13,88 +13,113 @@ if (localStorage.length > 0) {
         const modifier = storedRoll.modifier;
 
         const customRoll = document.createElement('div');
-        customRoll.setAttribute('class', 'saved-roll');
-        customRoll.setAttribute('id', `custom-roll-${rollName}`)
+    customRoll.setAttribute('class', 'saved-roll');
+    customRoll.setAttribute('id', `custom-roll-${rollName}`)
 
-        const customRollAttributes = document.createElement('div');
-        customRollAttributes.setAttribute('class', 'saved-roll-attributes');
+    const customRollAttributes = document.createElement('div');
+    customRollAttributes.setAttribute('class', 'saved-roll-attributes');
 
-        const customRollName = document.createElement('p');
-        customRollName.setAttribute('class', 'custom-roll-attribute');
-        customRollName.setAttribute('class', 'custom-roll-name');
-        customRollName.innerText = `Name: ${rollName}`;
-        customRollAttributes.appendChild(customRollName);
+    const customRollName = document.createElement('p');
+    customRollName.setAttribute('class', 'custom-roll-attribute');
+    customRollName.setAttribute('class', 'custom-roll-name');
+    customRollName.innerText = `Name: ${rollName}`;
+    customRollAttributes.appendChild(customRollName);
 
-        const customRollNumDice = document.createElement('p');
-        customRollNumDice.setAttribute('class', 'custom-roll-attribute');
-        customRollNumDice.innerText = `Number of Dice: ${numDice}`;
-        customRollAttributes.appendChild(customRollNumDice);
+    const customRollNumDice = document.createElement('p');
+    customRollNumDice.setAttribute('class', 'custom-roll-attribute');
+    customRollNumDice.innerText = `Number of Dice: ${numDice}`;
+    customRollAttributes.appendChild(customRollNumDice);
 
-        const customRollTypeDice = document.createElement('p');
-        customRollTypeDice.setAttribute('class', 'custom-roll-attribute');
-        customRollTypeDice.innerText = `Type of Die: d${numSides}`;
-        customRollAttributes.appendChild(customRollTypeDice);
+    const customRollTypeDice = document.createElement('p');
+    customRollTypeDice.setAttribute('class', 'custom-roll-attribute');
+    customRollTypeDice.innerText = `Type of Die: d${numSides}`;
+    customRollAttributes.appendChild(customRollTypeDice);
 
-        const customRollMod = document.createElement('p');
-        customRollMod.setAttribute('class', 'custom-roll-attribute');
-        customRollMod.innerText = `Modifier: ${modifier}`;
-        customRollAttributes.appendChild(customRollMod);
+    const customRollMod = document.createElement('p');
+    customRollMod.setAttribute('class', 'custom-roll-attribute');
+    customRollMod.innerText = `Modifier: ${modifier}`;
+    customRollAttributes.appendChild(customRollMod);
 
-        customRoll.appendChild(customRollAttributes);
+    customRoll.appendChild(customRollAttributes);
 
-        const customRollBox = document.createElement('div');
-        customRollBox.setAttribute('class', 'custom-roll-box');
-        customRoll.appendChild(customRollBox);
+    const customRollBox = document.createElement('div');
+    customRollBox.setAttribute('class', 'custom-roll-box');
+    customRoll.appendChild(customRollBox);
 
-        const deleteCustomRoll = document.createElement('button');
-        deleteCustomRoll.setAttribute('class', 'delete-custom-roll');
-        deleteCustomRoll.setAttribute('id', `delete-${rollName.toLowerCase()}`)
-        deleteCustomRoll.innerText = 'X';
-        customRoll.appendChild(deleteCustomRoll);
+    const customRollDice = document.createElement('div');
+    customRollDice.setAttribute('class', 'custom-roll-dice');
+    customRollBox.appendChild(customRollDice);
 
-        const customRollBtn = document.createElement('button');
-        customRollBtn.setAttribute('class', 'custom-roll-button');
-        customRollBtn.setAttribute('id', rollName.toLowerCase());
-        customRollBtn.innerText = 'Roll';
-        customRoll.appendChild(customRollBtn);
+    const customRollTotal = document.createElement('div');
+    customRollTotal.setAttribute('class', 'custom-roll-total');
+    customRollBox.appendChild(customRollTotal);
 
-        rollList.appendChild(customRoll);
+    const deleteCustomRoll = document.createElement('button');
+    deleteCustomRoll.setAttribute('class', 'delete-custom-roll');
+    deleteCustomRoll.setAttribute('id', `delete-${rollName.toLowerCase()}`)
+    deleteCustomRoll.innerText = 'X';
+    customRoll.appendChild(deleteCustomRoll);
 
-        const rollButton = document.getElementById(rollName.toLowerCase());
-        const deleteButton = document.getElementById(`delete-${rollName.toLowerCase()}`)
+    const customRollBtn = document.createElement('button');
+    customRollBtn.setAttribute('class', 'custom-roll-button');
+    customRollBtn.setAttribute('id', rollName.toLowerCase());
+    customRollBtn.innerText = 'Roll';
+    customRoll.appendChild(customRollBtn);
 
-        rollButton.addEventListener('click', () => {
-            rollButton.disabled = true;
+    rollList.appendChild(customRoll);
 
-            while (customRollBox.firstChild) {
-                customRollBox.removeChild(customRollBox.firstChild)
-            }
+    const rollButton = document.getElementById(rollName.toLowerCase());
+    const deleteButton = document.getElementById(`delete-${rollName.toLowerCase()}`)
 
-            let total = 0;
+    rollButton.addEventListener('click', () => {
+        rollButton.disabled = true;
 
-            setTimeout(() => {
-                for (let i = numDice; i > 0; i--) {
-                    let roll = Math.ceil((Math.random() * numSides));
-                    if (roll < 1) {
-                        roll = 1;
-                    }
+        while (customRollDice.firstChild) {
+            customRollDice.removeChild(customRollDice.firstChild)
+        }
 
-                    total = total + roll;
+        while (customRollTotal.firstChild) {
+            customRollTotal.removeChild(customRollTotal.firstChild)
+        }
+
+        let total = 0;
+
+        setTimeout(() => {
+            for (let i = numDice; i > 0; i--) {
+                let roll = Math.ceil((Math.random() * numSides));
+                if (roll < 1) {
+                    roll = 1;
                 }
 
-                const result = document.createElement('div');
-                result.setAttribute('class', 'roll')
-                result.innerText = total + modifier;
+                total = total + roll;
 
-                customRollBox.appendChild(result);
+                const die = document.createElement('div');
+                die.setAttribute('class', 'custom-die-roll');
+                die.innerText = roll;
 
-                rollButton.disabled = false;
+                customRollDice.appendChild(die);
+            }
 
-            }, 1450);
+            if (modifier > 0 || modifier < 0) {
+                const die = document.createElement('div');
+                die.setAttribute('class', 'mod-die');
+                die.innerText = `mod. ${modifier}`;
+                customRollDice.appendChild(die);
+            }
+
+            const result = document.createElement('div');
+            result.setAttribute('class', 'custom-dice-total')
+            result.innerText = total + modifier;
+
+            customRollTotal.appendChild(result);
+
+            rollButton.disabled = false;
+
+        }, 1450);
 
 
-            rollSound.play();
-        });
+        rollSound.play();
+    });
 
         deleteButton.addEventListener('click', () => {
             deleteButton.disabled = true;

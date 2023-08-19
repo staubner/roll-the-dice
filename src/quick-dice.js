@@ -1,5 +1,7 @@
 const dice = document.getElementById('form')
 const results = document.getElementById('results')
+const individualDice = document.getElementById('individual-dice')
+const totalResult = document.getElementById('total')
 const quickAttack = document.getElementById('quick-attack-roll')
 const quickResult = document.getElementById('attack-roll')
 const resetBtn = document.getElementById('reset')
@@ -12,16 +14,20 @@ dice.addEventListener('submit', (event) => {
 
     document.getElementById('roll-dice').disabled = true;
 
-    while (results.firstChild) {
-        results.removeChild(results.firstChild)
-    }
+    while (individualDice.firstChild) {
+        individualDice.removeChild(individualDice.firstChild)
+    };
+
+    while (totalResult.firstChild) {
+        totalResult.removeChild(totalResult.firstChild)
+    };
 
     if (event.target[0].value === '' || event.target[1].value === '') {
         errorSound.play();
         document.getElementById('roll-dice').disabled = false;
         window.alert('Invalid selection, please specify a number of dice and type of dice to roll')
         return;
-    }
+    };
 
     const numDice = event.target[0].value;
     const numSides = event.target[1].value;
@@ -31,13 +37,15 @@ dice.addEventListener('submit', (event) => {
         for (let i = numDice; i > 0; i--) {
             const roll = Math.ceil(Math.random() * numSides)
             total = total + roll;
+
+            const die = document.createElement('div');
+            die.setAttribute('class', 'die-roll');
+            die.innerText = roll;
+
+            individualDice.appendChild(die);
         }
 
-        const result = document.createElement('div');
-        result.setAttribute('class', 'roll')
-        result.innerText = total;
-    
-        results.appendChild(result);
+        totalResult.innerText = total;
 
         document.getElementById('roll-dice').disabled = false;
     }, 1450);

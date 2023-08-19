@@ -76,6 +76,14 @@ customForm.addEventListener('submit', (event) => {
     customRollBox.setAttribute('class', 'custom-roll-box');
     customRoll.appendChild(customRollBox);
 
+    const customRollDice = document.createElement('div');
+    customRollDice.setAttribute('class', 'custom-roll-dice');
+    customRollBox.appendChild(customRollDice);
+
+    const customRollTotal = document.createElement('div');
+    customRollTotal.setAttribute('class', 'custom-roll-total');
+    customRollBox.appendChild(customRollTotal);
+
     const deleteCustomRoll = document.createElement('button');
     deleteCustomRoll.setAttribute('class', 'delete-custom-roll');
     deleteCustomRoll.setAttribute('id', `delete-${rollName.toLowerCase()}`)
@@ -96,8 +104,12 @@ customForm.addEventListener('submit', (event) => {
     rollButton.addEventListener('click', () => {
         rollButton.disabled = true;
 
-        while (customRollBox.firstChild) {
-            customRollBox.removeChild(customRollBox.firstChild)
+        while (customRollDice.firstChild) {
+            customRollDice.removeChild(customRollDice.firstChild)
+        }
+
+        while (customRollTotal.firstChild) {
+            customRollTotal.removeChild(customRollTotal.firstChild)
         }
 
         let total = 0;
@@ -110,13 +122,26 @@ customForm.addEventListener('submit', (event) => {
                 }
 
                 total = total + roll;
+
+                const die = document.createElement('div');
+                die.setAttribute('class', 'custom-die-roll');
+                die.innerText = roll;
+
+                customRollDice.appendChild(die);
+            }
+
+            if (modifier > 0 || modifier < 0) {
+                const die = document.createElement('div');
+                die.setAttribute('class', 'mod-die');
+                die.innerText = `mod. ${modifier}`;
+                customRollDice.appendChild(die);
             }
 
             const result = document.createElement('div');
-            result.setAttribute('class', 'roll')
+            result.setAttribute('class', 'custom-dice-total')
             result.innerText = total + modifier;
 
-            customRollBox.appendChild(result);
+            customRollTotal.appendChild(result);
 
             rollButton.disabled = false;
 

@@ -25,7 +25,7 @@
         <input name="dice-name" id="dice-name" maxlength="30">
         <br>
         <label for="num-dice">Select number of dice</label>
-        <input type="number" name="num-dice" id="num-dice" min="1" max="20" value="1">
+        <input type="number" name="num-dice" id="num-dice" min="1" max="10" value="1">
         <br>
         <label for="num-sides">Select type of dice</label>
         <select name="num-sides" id="num-sides" form="custom-form">
@@ -41,12 +41,13 @@
         <br>
         <label for="modifier">Modifier (Optional)</label>
         <input type="number" name="modifier" id="modifier" min="-20" max="20" value="0">
-        <br><br>
+        <br>
         <input type="submit" id="create-custom" value="Create Custom Roll">
     </form>
 
     <div id="roll-list">
         <h2 id="custom-header">Custom Rolls</h2>
+        <hr>
     </div>
 </body>
 
