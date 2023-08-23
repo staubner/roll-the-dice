@@ -1,11 +1,12 @@
 import { checkForDupes } from './dupe-name-check.js';
+import { confirmRoll } from './confirm-custom-roll.js';
 
 const rollSound = new Audio('../audio/rolling-dice-2-102706.mp3')
 const errorSound = new Audio('../audio/error-126627.mp3')
 const customForm = document.getElementById('custom-form')
 const rollList = document.getElementById('roll-list')
 
-customForm.addEventListener('submit', (event) => {
+customForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     document.getElementById('create-custom').disabled = true;
@@ -116,11 +117,7 @@ customForm.addEventListener('submit', (event) => {
 
         setTimeout(() => {
             for (let i = numDice; i > 0; i--) {
-                let roll = Math.ceil((Math.random() * numSides));
-                if (roll < 1) {
-                    roll = 1;
-                }
-
+                const roll = Math.ceil((Math.random() * numSides));
                 total = total + roll;
 
                 const die = document.createElement('div');
@@ -164,6 +161,8 @@ customForm.addEventListener('submit', (event) => {
     });
 
     customForm.reset();
+
+    confirmRoll();
 
     document.getElementById('create-custom').disabled = false;
 });
