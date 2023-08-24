@@ -6,7 +6,7 @@ const errorSound = new Audio('../audio/error-126627.mp3')
 const customForm = document.getElementById('custom-form')
 const rollList = document.getElementById('roll-list')
 
-customForm.addEventListener('submit', async (event) => {
+customForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     document.getElementById('create-custom').disabled = true;
