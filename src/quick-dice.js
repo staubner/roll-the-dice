@@ -1,5 +1,4 @@
 if (localStorage.length > 0 && !sessionStorage.getItem('redirect')) {
-    sessionStorage.setItem('redirect', 'true');
     // window.location.href = 'http://127.0.0.1:8080/custom-dice.html';
     window.location.href = 'https://memedice.netlify.app/custom-dice';
 };
@@ -20,12 +19,14 @@ dice.addEventListener('submit', (event) => {
 
     document.getElementById('roll-dice').disabled = true;
 
-    while (individualDice.firstChild) {
-        individualDice.removeChild(individualDice.firstChild)
+    if (individualDice.firstChild) {
+        individualDice.innerHTML = '';
+        // removeChild(individualDice.firstChild)
     };
 
-    while (totalResult.firstChild) {
-        totalResult.removeChild(totalResult.firstChild)
+    if (totalResult.firstChild) {
+        totalResult.innerHTML = '';
+        // removeChild(totalResult.firstChild)
     };
 
     if (event.target[0].value === '' || event.target[1].value === '') {

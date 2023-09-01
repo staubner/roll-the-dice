@@ -74,12 +74,12 @@ if (localStorage.length > 0) {
         rollButton.addEventListener('click', () => {
             rollButton.disabled = true;
 
-            while (customRollDice.firstChild) {
-                customRollDice.removeChild(customRollDice.firstChild)
+            if (customRollDice.firstChild) {
+                customRollDice.innerHTML = '';
             }
 
-            while (customRollTotal.firstChild) {
-                customRollTotal.removeChild(customRollTotal.firstChild)
+            if (customRollTotal.firstChild) {
+                customRollTotal.innerHTML = '';
             }
 
             let total = 0;
@@ -95,19 +95,23 @@ if (localStorage.length > 0) {
                     die.innerText = roll;
 
                     customRollDice.appendChild(die);
-                }
+                };
 
                 if (modifier > 0 || modifier < 0) {
                     const die = document.createElement('div');
                     die.setAttribute('class', 'mod-die');
                     die.innerText = `mod. ${modifier}`;
                     customRollDice.appendChild(die);
-                }
+                };
 
                 const result = document.createElement('div');
                 result.setAttribute('class', 'custom-dice-total')
-                result.innerText = total + modifier;
-
+                if (total + modifier >= 1) {
+                    result.innerText = total + modifier;
+                } else {
+                    result.innerText = 1;
+                };
+                
                 customRollTotal.appendChild(result);
 
                 rollButton.disabled = false;

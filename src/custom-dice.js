@@ -9,6 +9,17 @@ const rollSound = new Audio('../audio/rolling-dice-2-102706.mp3')
 const errorSound = new Audio('../audio/error-126627.mp3')
 const customForm = document.getElementById('custom-form')
 const rollList = document.getElementById('roll-list')
+const hideButton = document.getElementById('hide-custom')
+
+hideButton.addEventListener('click', () => {
+    if (customForm.style.display !== 'none') {
+        customForm.style.display = 'none';
+        hideButton.innerText = 'Show Custom Form';
+    } else {
+        customForm.style.display = 'flex';
+        hideButton.innerText = 'Hide Custom Form';
+    };
+});
 
 customForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -109,13 +120,13 @@ customForm.addEventListener('submit', (event) => {
     rollButton.addEventListener('click', () => {
         rollButton.disabled = true;
 
-        while (customRollDice.firstChild) {
-            customRollDice.removeChild(customRollDice.firstChild)
-        }
+        if (customRollDice.firstChild) {
+            customRollDice.innerHTML = '';
+        };
 
-        while (customRollTotal.firstChild) {
-            customRollTotal.removeChild(customRollTotal.firstChild)
-        }
+        if (customRollTotal.firstChild) {
+            customRollTotal.innerHTML = '';
+        };
 
         let total = 0;
 
@@ -129,18 +140,22 @@ customForm.addEventListener('submit', (event) => {
                 die.innerText = roll;
 
                 customRollDice.appendChild(die);
-            }
+            };
 
             if (modifier > 0 || modifier < 0) {
                 const die = document.createElement('div');
                 die.setAttribute('class', 'mod-die');
                 die.innerText = `mod. ${modifier}`;
                 customRollDice.appendChild(die);
-            }
+            };
 
             const result = document.createElement('div');
             result.setAttribute('class', 'custom-dice-total')
-            result.innerText = total + modifier;
+            if (total + modifier >= 1) {
+                result.innerText = total + modifier;
+            } else {
+                result.innerText = 1;
+            };
 
             customRollTotal.appendChild(result);
 

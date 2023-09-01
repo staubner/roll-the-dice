@@ -119,6 +119,12 @@ h5 {
     font-size: 3rem;
 }
 
+#hide-custom {
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
 .custom-dice-total {
     font-size: 2.5rem;
     background-color: white;
@@ -167,6 +173,13 @@ label {
     align-items: center;
 }
 
+#custom-form {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 #custom-roll-name {
     text-decoration: underline;
 }
@@ -178,7 +191,7 @@ label {
     border: 0;
 }
 
-.delete-custom-roll:hover, .custom-roll-button:hover, #create-custom:hover, #roll-dice:hover, #quick-attack-roll:hover {
+.delete-custom-roll:hover, .custom-roll-button:hover, #create-custom:hover, #roll-dice:hover, #quick-attack-roll:hover, #hide-custom {
     cursor: pointer;
 }
 
