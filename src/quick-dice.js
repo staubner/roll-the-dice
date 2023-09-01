@@ -21,12 +21,10 @@ dice.addEventListener('submit', (event) => {
 
     if (individualDice.firstChild) {
         individualDice.innerHTML = '';
-        // removeChild(individualDice.firstChild)
     };
 
     if (totalResult.firstChild) {
         totalResult.innerHTML = '';
-        // removeChild(totalResult.firstChild)
     };
 
     if (event.target[0].value === '' || event.target[1].value === '') {
