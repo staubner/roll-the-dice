@@ -123,6 +123,7 @@ h5 {
     display: block;
     margin: 0 auto;
     border-radius: 5px;
+    width: 155px;
 }
 
 .custom-dice-total {
