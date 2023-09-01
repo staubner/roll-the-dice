@@ -1,5 +1,10 @@
-if (localStorage.length > 0) {
+if (localStorage.length > 0 && !sessionStorage.getItem('redirect')) {
+    // window.location.href = 'http://127.0.0.1:8080/custom-dice.html';
     window.location.href = 'https://memedice.netlify.app/custom-dice';
+    sessionStorage.setItem('redirect', 'true')
+} else if (sessionStorage.getItem('redirect') = 'true') {
+    // window.location.href = 'http://127.0.0.1:8080';
+    window.location.href = 'https://memedice.netlify.app';
 };
 
 const dice = document.getElementById('form')
