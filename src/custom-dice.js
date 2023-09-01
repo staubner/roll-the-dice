@@ -1,6 +1,10 @@
 import { checkForDupes } from './dupe-name-check.js';
 import { confirmRoll } from './confirm-custom-roll.js';
 
+if (!sessionStorage.getItem('redirect')) {
+    sessionStorage.setItem('redirect', 'true');
+};
+
 const rollSound = new Audio('../audio/rolling-dice-2-102706.mp3')
 const errorSound = new Audio('../audio/error-126627.mp3')
 const customForm = document.getElementById('custom-form')
