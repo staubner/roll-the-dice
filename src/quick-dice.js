@@ -1,3 +1,7 @@
+if (localStorage.length > 0) {
+    window.location.href = 'https://memedice.netlify.app/custom-dice';
+};
+
 const dice = document.getElementById('form')
 const results = document.getElementById('results')
 const individualDice = document.getElementById('individual-dice')
@@ -49,7 +53,7 @@ dice.addEventListener('submit', (event) => {
 
         document.getElementById('roll-dice').disabled = false;
     }, 1450);
-    
+
 
     rollSound.play();
 });
