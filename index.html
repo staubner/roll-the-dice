@@ -15,11 +15,11 @@
 <body>
     <h1>Quick Dice</h1>
     <h5><a href="./custom-dice.html">Custom Dice</a></h5>
-    <form id="form" action="">
+    <form id="quick-roll-form" action="">
         <label for="num-dice">Select number of dice</label>
         <input type="number" name="num-dice" id="num-dice" min="1" max="10" value="1">
         <label for="num-sides">Select type of dice</label>
-        <select name="num-sides" id="num-sides" form="form">
+        <select name="num-sides" id="num-sides" form="quick-roll-form">
             <option value="">--</option>
             <option id="d4" value="4">Four Sided</option>
             <option id="d6" value="6">Six Sided</option>
@@ -30,7 +30,7 @@
             <option id="d100" value="100">100 Sided</option>
         </select>
         <br>
-        <input type="submit" id="roll-dice" value="Roll the Dice!">
+        <input type="submit" class="roll" id="roll-dice">
     </form>
     <br>
     <h2>Results</h2>
@@ -40,7 +40,7 @@
     </div>
     <br>
     <div id="quick-roll">
-        <button id="quick-attack-roll">Quick d20 Roll</button>
+        <button id="quick-attack-roll" class="roll">Quick d20 Roll</button>
     </div>
     <div id="attack-roll"></div>
     <div id="reset-container">

@@ -3,7 +3,7 @@ if (localStorage.length > 0 && !sessionStorage.getItem('redirect')) {
     window.location.href = 'https://memedice.netlify.app/custom-dice';
 };
 
-const dice = document.getElementById('form')
+const dice = document.getElementById('quick-roll-form')
 const results = document.getElementById('results')
 const individualDice = document.getElementById('individual-dice')
 const totalResult = document.getElementById('total')

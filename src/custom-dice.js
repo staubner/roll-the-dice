@@ -107,7 +107,7 @@ customForm.addEventListener('submit', (event) => {
     customRoll.appendChild(deleteCustomRoll);
 
     const customRollBtn = document.createElement('button');
-    customRollBtn.setAttribute('class', 'custom-roll-button');
+    customRollBtn.setAttribute('class', 'custom-roll-button roll');
     customRollBtn.setAttribute('id', rollName.toLowerCase());
     customRollBtn.innerText = 'Roll';
     customRoll.appendChild(customRollBtn);
