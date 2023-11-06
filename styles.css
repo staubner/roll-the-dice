@@ -111,7 +111,8 @@ button,
 }
 
 .die-roll,
-.custom-die-roll {
+.custom-die-roll,
+.mod-die {
     box-shadow: 2px 2px #555;
 }
 
